@@ -16,6 +16,10 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      * @var Runner
      */
     private $runner;
+    /**
+     * @var Finder
+     */
+    private $finder;
 
     /**
      * Apply plugin modifications to composer
@@ -26,6 +30,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $this->runner = new Runner($composer, $io);
+        $this->finder = new Finder($composer);
     }
 
     /**
