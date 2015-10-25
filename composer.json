@@ -9,6 +9,9 @@
     "require-dev": {
         "composer/composer": "dev-master"
     },
+    "autoload": {
+        "psr-4": {"BudgeIt\\ComposerBuilder\\": "src/"}
+    },
     "extra": {
         "class": "BudgeIt\\ComposerBuilder\\Plugin"
     }
