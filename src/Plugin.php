@@ -13,6 +13,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 {
 
     /**
+     * @var Runner
+     */
+    private $runner;
+
+    /**
      * Apply plugin modifications to composer
      *
      * @param Composer $composer
@@ -20,7 +25,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        // Nothing to do here
+        $this->runner = new Runner($composer, $io);
     }
 
     /**
