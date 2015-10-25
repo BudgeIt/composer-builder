@@ -12,6 +12,8 @@ use Composer\Script\ScriptEvents;
 class Plugin implements PluginInterface, EventSubscriberInterface
 {
 
+    const PACKAGE = 'budgeit/composer-builder';
+
     /**
      * @var Runner
      */
@@ -30,7 +32,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $this->runner = new Runner($composer, $io);
-        $this->finder = new Finder($composer);
+        $this->finder = new Finder($composer, static::PACKAGE);
     }
 
     /**
