@@ -2,6 +2,8 @@
 
 namespace BudgeIt\ComposerBuilder;
 
+use BudgeIt\ComposerBuilder\Installers\Bower;
+use BudgeIt\ComposerBuilder\Installers\Npm;
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
@@ -32,6 +34,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $this->runner = new Runner($composer, $io);
+        $this->runner->registerInstaller(new Npm());
+        $this->runner->registerInstaller(new Bower());
         $this->finder = new Finder($composer, static::PACKAGE);
     }
 
