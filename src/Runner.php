@@ -35,20 +35,40 @@ class Runner
         $this->io = $io;
     }
 
+    /**
+     * Register a new installer object
+     *
+     * @param InstallerInterface $installer
+     */
     public function registerInstaller(InstallerInterface $installer)
     {
         $this->installers[$installer->getName()] = $installer;
     }
 
+    /**
+     * Register a new build tool object
+     *
+     * @param BuildToolInterface $buildTool
+     */
     public function registerBuildTool(BuildToolInterface $buildTool)
     {
         $this->buildTools[$buildTool->getName()] = $buildTool;
     }
 
+    /**
+     * Run the installers for a package
+     *
+     * @param PackageInterface $package
+     */
     public function runInstallers(PackageInterface $package)
     {
     }
 
+    /**
+     * Run the build tools for a package
+     *
+     * @param PackageInterface $package
+     */
     public function runBuildTools(PackageInterface $package)
     {
     }

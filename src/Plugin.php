@@ -61,12 +61,28 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         ];
     }
 
+    /**
+     * Run the installers
+     *
+     * @param Event $event
+     */
     public function runInstallers(Event $event)
     {
+        foreach ($this->finder->getDependentPackages($event->isDevMode()) as $package) {
+            $this->runner->runInstallers($package);
+        }
     }
 
+    /**
+     * Run the build tools
+     *
+     * @param Event $event
+     */
     public function runBuildTools(Event $event)
     {
+        foreach ($this->finder->getDependentPackages($event->isDevMode()) as $package) {
+            $this->runner->runBuildTools($package);
+        }
     }
 
 }
