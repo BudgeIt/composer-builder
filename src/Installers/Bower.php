@@ -29,4 +29,14 @@ class Bower implements InstallerInterface
         // TODO: Implement supports() method.
     }
 
+    /**
+     * Run this installer for the package
+     *
+     * @param PackageInterface $package
+     */
+    public function install(PackageInterface $package)
+    {
+        // TODO: Implement install() method.
+    }
+
 }

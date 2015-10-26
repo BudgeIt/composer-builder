@@ -22,4 +22,11 @@ interface InstallerInterface
      */
     public function supports(PackageInterface $package);
 
+    /**
+     * Run this installer for the package
+     *
+     * @param PackageInterface $package
+     */
+    public function install(PackageInterface $package);
+
 }
