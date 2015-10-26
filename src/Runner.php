@@ -62,6 +62,11 @@ class Runner
      */
     public function runInstallers(PackageInterface $package)
     {
+        foreach ($this->installers as $installer) {
+            if ($installer->supports($package)) {
+                $installer->install($package);
+            }
+        }
     }
 
     /**
