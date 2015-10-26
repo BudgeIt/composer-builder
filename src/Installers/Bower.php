@@ -3,6 +3,7 @@
 namespace BudgeIt\ComposerBuilder\Installers;
 
 use BudgeIt\ComposerBuilder\InstallerInterface;
+use Composer\Package\PackageInterface;
 
 class Bower implements InstallerInterface
 {
@@ -15,6 +16,17 @@ class Bower implements InstallerInterface
     public function getName()
     {
         return 'bower';
+    }
+
+    /**
+     * Indicate whether a package supports this installer
+     *
+     * @param PackageInterface $package
+     * @return bool
+     */
+    public function supports(PackageInterface $package)
+    {
+        // TODO: Implement supports() method.
     }
 
 }
