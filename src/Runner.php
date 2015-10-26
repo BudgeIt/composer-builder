@@ -76,6 +76,11 @@ class Runner
      */
     public function runBuildTools(PackageInterface $package)
     {
+        foreach ($this->buildTools as $buildTool) {
+            if ($buildTool->supports($package)) {
+                $buildTool->build($package);
+            }
+        }
     }
 
 }
