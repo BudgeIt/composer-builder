@@ -2,8 +2,6 @@
 
 namespace BudgeIt\ComposerBuilder;
 
-use Composer\Package\PackageInterface;
-
 interface BuildToolInterface
 {
 
@@ -17,16 +15,16 @@ interface BuildToolInterface
     /**
      * Indicate whether a package supports this build tool
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      * @return bool
      */
-    public function supports(PackageInterface $package);
+    public function supports(PackageWrapper $package);
 
     /**
      * Run this build tool for this package
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      */
-    public function build(PackageInterface $package);
+    public function build(PackageWrapper $package);
 
 }

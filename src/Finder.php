@@ -30,18 +30,19 @@ class Finder
      * Get an array of packages that depend on the target package
      *
      * @param bool $isDevMode
-     * @return PackageInterface[]
+     * @return PackageWrapper[]
      */
     public function getDependentPackages($isDevMode)
     {
         $packages = [];
         $rootPackage = $this->composer->getPackage();
         if ($this->isDependentPackage($rootPackage, (bool)$isDevMode)) {
-            $packages[] = $rootPackage;
+            $packages[] = new PackageWrapper($rootPackage, getcwd());
         }
+        $manager = $this->composer->getInstallationManager();
         foreach ($this->composer->getRepositoryManager()->getLocalRepository()->getPackages() as $package) {
             if ($this->isDependentPackage($package, $isDevMode)) {
-                $packages[] = $package;
+                $packages[] = new PackageWrapper($package, $manager->getInstallPath($package));
             }
         }
         return $packages;

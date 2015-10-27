@@ -2,8 +2,6 @@
 
 namespace BudgeIt\ComposerBuilder;
 
-use Composer\Package\PackageInterface;
-
 interface InstallerInterface
 {
 
@@ -17,16 +15,16 @@ interface InstallerInterface
     /**
      * Indicate whether a package supports this installer
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      * @return bool
      */
-    public function supports(PackageInterface $package);
+    public function supports(PackageWrapper $package);
 
     /**
      * Run this installer for the package
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      */
-    public function install(PackageInterface $package);
+    public function install(PackageWrapper $package);
 
 }

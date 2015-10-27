@@ -3,7 +3,7 @@
 namespace BudgeIt\ComposerBuilder\Installers;
 
 use BudgeIt\ComposerBuilder\InstallerInterface;
-use Composer\Package\PackageInterface;
+use BudgeIt\ComposerBuilder\PackageWrapper;
 
 class Npm implements InstallerInterface
 {
@@ -21,10 +21,10 @@ class Npm implements InstallerInterface
     /**
      * Indicate whether a package supports this installer
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      * @return bool
      */
-    public function supports(PackageInterface $package)
+    public function supports(PackageWrapper $package)
     {
         // TODO: Implement supports() method.
     }
@@ -32,9 +32,9 @@ class Npm implements InstallerInterface
     /**
      * Run this installer for the package
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      */
-    public function install(PackageInterface $package)
+    public function install(PackageWrapper $package)
     {
         // TODO: Implement install() method.
     }

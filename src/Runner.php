@@ -4,7 +4,6 @@ namespace BudgeIt\ComposerBuilder;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
-use Composer\Package\PackageInterface;
 
 class Runner
 {
@@ -58,9 +57,9 @@ class Runner
     /**
      * Run the installers for a package
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      */
-    public function runInstallers(PackageInterface $package)
+    public function runInstallers(PackageWrapper $package)
     {
         foreach ($this->installers as $installer) {
             if ($installer->supports($package)) {
@@ -72,9 +71,9 @@ class Runner
     /**
      * Run the build tools for a package
      *
-     * @param PackageInterface $package
+     * @param PackageWrapper $package
      */
-    public function runBuildTools(PackageInterface $package)
+    public function runBuildTools(PackageWrapper $package)
     {
         foreach ($this->buildTools as $buildTool) {
             if ($buildTool->supports($package)) {
