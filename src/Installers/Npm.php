@@ -26,7 +26,7 @@ class Npm implements InstallerInterface
      */
     public function supports(PackageWrapper $package)
     {
-        // TODO: Implement supports() method.
+        return file_exists(rtrim($package->getPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'package.json');
     }
 
     /**
