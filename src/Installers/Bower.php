@@ -5,6 +5,7 @@ namespace BudgeIt\ComposerBuilder\Installers;
 use BudgeIt\ComposerBuilder\InstallerInterface;
 use BudgeIt\ComposerBuilder\PackageWrapper;
 use BudgeIt\ComposerBuilder\ProcessBuilderTrait;
+use Exception;
 
 class Bower implements InstallerInterface
 {
@@ -37,10 +38,33 @@ class Bower implements InstallerInterface
      *
      * @param PackageWrapper $package
      * @param bool $isDev
+     * @throws Exception if an exception occurs during execution
      */
     public function install(PackageWrapper $package, $isDev)
     {
-        // TODO: Implement install() method.
+        $oldCwd = getcwd();
+        $args = ['bower', 'install'];
+        $e = false;
+        if (!$isDev) {
+            $args[] = '--production';
+        }
+        try {
+            $this->getProcessBuilder()
+                ->setWorkingDirectory($package->getPath())
+                ->setPrefix([])
+                ->setArguments($args)
+                ->getProcess()
+                ->run();
+        } catch (Exception $e) {
+        } finally {
+            $this->getProcessBuilder()
+                ->setPrefix([])
+                ->setArguments([])
+                ->setWorkingDirectory($oldCwd);
+            if ($e) {
+                throw $e;
+            }
+        }
     }
 
 }
