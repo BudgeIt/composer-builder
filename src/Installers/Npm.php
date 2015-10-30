@@ -2,15 +2,22 @@
 
 namespace BudgeIt\ComposerBuilder\Installers;
 
+use BudgeIt\ComposerBuilder\HasIOInterfaceTrait;
 use BudgeIt\ComposerBuilder\InstallerInterface;
 use BudgeIt\ComposerBuilder\PackageWrapper;
 use BudgeIt\ComposerBuilder\ProcessBuilderTrait;
+use Composer\IO\IOInterface;
 use Exception;
 
 class Npm implements InstallerInterface
 {
 
-    use ProcessBuilderTrait;
+    use ProcessBuilderTrait, HasIOInterfaceTrait;
+
+    public function __construct(IOInterface $io)
+    {
+        $this->io = $io;
+    }
 
     /**
      * Get an identifier for this installer
