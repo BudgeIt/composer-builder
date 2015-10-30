@@ -10,6 +10,7 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
+use Symfony\Component\Process\ProcessBuilder;
 
 class Plugin implements PluginInterface, EventSubscriberInterface
 {
@@ -34,8 +35,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $this->runner = new Runner($composer, $io);
-        $this->runner->registerInstaller(new Npm());
-        $this->runner->registerInstaller(new Bower());
+        $processBuilder = new ProcessBuilder();
+        $this->runner->registerInstaller((new Npm())->setProcessBuilder($processBuilder));
+        $this->runner->registerInstaller((new Bower())->setProcessBuilder($processBuilder));
         $this->finder = new Finder($composer, static::PACKAGE);
     }
 

@@ -4,9 +4,12 @@ namespace BudgeIt\ComposerBuilder\Installers;
 
 use BudgeIt\ComposerBuilder\InstallerInterface;
 use BudgeIt\ComposerBuilder\PackageWrapper;
+use BudgeIt\ComposerBuilder\ProcessBuilderTrait;
 
 class Bower implements InstallerInterface
 {
+
+    use ProcessBuilderTrait;
 
     /**
      * Get an identifier for this installer
