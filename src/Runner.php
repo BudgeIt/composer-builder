@@ -64,6 +64,13 @@ class Runner
     {
         foreach ($this->installers as $installer) {
             if ($installer->supports($package)) {
+                $this->io->write(
+                    sprintf(
+                        '<info>Running %s installer for  %s</info>',
+                        $installer->getName(),
+                        $package->getPackage()->getPrettyName()
+                    )
+                );
                 $installer->install($package, $isDevMode);
             }
         }
