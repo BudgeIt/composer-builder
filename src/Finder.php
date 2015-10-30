@@ -19,6 +19,8 @@ class Finder
 
     /**
      * Finder constructor.
+     * @param Composer $composer
+     * @param string $targetPackage
      */
     public function __construct(Composer $composer, $targetPackage)
     {
@@ -62,7 +64,8 @@ class Finder
             $packages = array_merge($packages, $package->getDevRequires());
         }
         foreach ($packages as $link) {
-            if ($this->targetPackage === $link) {
+            /** @var \Composer\Package\Link $link */
+            if ($this->targetPackage === $link->getTarget()) {
                 return true;
             }
         }
