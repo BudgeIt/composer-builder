@@ -36,8 +36,9 @@ class Npm implements InstallerInterface
      * Run this installer for the package
      *
      * @param PackageWrapper $package
+     * @param bool $isDev
      */
-    public function install(PackageWrapper $package)
+    public function install(PackageWrapper $package, $isDev)
     {
         // TODO: Implement install() method.
     }
