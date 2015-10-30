@@ -2,17 +2,17 @@
 
 namespace BudgeIt\ComposerBuilder\Installers;
 
+use BudgeIt\ComposerBuilder\ExecutorTrait;
 use BudgeIt\ComposerBuilder\HasIOInterfaceTrait;
 use BudgeIt\ComposerBuilder\InstallerInterface;
 use BudgeIt\ComposerBuilder\PackageWrapper;
-use BudgeIt\ComposerBuilder\ProcessBuilderTrait;
 use Composer\IO\IOInterface;
 use Exception;
 
 class Bower implements InstallerInterface
 {
 
-    use ProcessBuilderTrait, HasIOInterfaceTrait;
+    use ExecutorTrait, HasIOInterfaceTrait;
 
     public function __construct(IOInterface $io)
     {
@@ -49,29 +49,11 @@ class Bower implements InstallerInterface
      */
     public function install(PackageWrapper $package, $isDev)
     {
-        $oldCwd = getcwd();
-        $args = ['bower', 'install'];
-        $e = false;
+        $args = ['install'];
         if (!$isDev) {
             $args[] = '--production';
         }
-        try {
-            $this->getProcessBuilder()
-                ->setWorkingDirectory($package->getPath())
-                ->setPrefix([])
-                ->setArguments($args)
-                ->getProcess()
-                ->run();
-        } catch (Exception $e) {
-        } finally {
-            $this->getProcessBuilder()
-                ->setPrefix([])
-                ->setArguments([])
-                ->setWorkingDirectory($oldCwd);
-            if ($e) {
-                throw $e;
-            }
-        }
+        $this->execute('bower', $args, $this->io, $package->getPath());
     }
 
 }

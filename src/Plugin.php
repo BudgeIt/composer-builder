@@ -36,8 +36,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     {
         $this->runner = new Runner($composer, $io);
         $processBuilder = new ProcessBuilder();
-        $this->runner->registerInstaller((new Npm($io))->setProcessBuilder($processBuilder));
-        $this->runner->registerInstaller((new Bower($io))->setProcessBuilder($processBuilder));
+        $this->runner->registerInstaller(new Npm($io));
+        $this->runner->registerInstaller(new Bower($io));
         $this->finder = new Finder($composer, static::PACKAGE);
     }
 
