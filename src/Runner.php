@@ -8,14 +8,12 @@ use Composer\IO\IOInterface;
 class Runner
 {
 
+    use HasIOInterfaceTrait;
+
     /**
      * @var Composer
      */
     private $composer;
-    /**
-     * @var IOInterface
-     */
-    private $io;
     /**
      * @var InstallerInterface[]
      */
@@ -66,7 +64,7 @@ class Runner
             if ($installer->supports($package)) {
                 $this->io->write(
                     sprintf(
-                        '<info>Running %s installer for  %s</info>',
+                        '<info>Running %s installer for %s</info>',
                         $installer->getName(),
                         $package->getPackage()->getPrettyName()
                     )
