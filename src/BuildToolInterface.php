@@ -24,7 +24,8 @@ interface BuildToolInterface
      * Run this build tool for this package
      *
      * @param PackageWrapper $package
+     * @param bool $isDev
      */
-    public function build(PackageWrapper $package);
+    public function build(PackageWrapper $package, $isDev);
 
 }

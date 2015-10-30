@@ -58,12 +58,13 @@ class Runner
      * Run the installers for a package
      *
      * @param PackageWrapper $package
+     * @param bool $isDevMode
      */
-    public function runInstallers(PackageWrapper $package)
+    public function runInstallers(PackageWrapper $package, $isDevMode)
     {
         foreach ($this->installers as $installer) {
             if ($installer->supports($package)) {
-                $installer->install($package);
+                $installer->install($package, $isDevMode);
             }
         }
     }
@@ -72,12 +73,13 @@ class Runner
      * Run the build tools for a package
      *
      * @param PackageWrapper $package
+     * @param bool $isDevMode
      */
-    public function runBuildTools(PackageWrapper $package)
+    public function runBuildTools(PackageWrapper $package, $isDevMode)
     {
         foreach ($this->buildTools as $buildTool) {
             if ($buildTool->supports($package)) {
-                $buildTool->build($package);
+                $buildTool->build($package, $isDevMode);
             }
         }
     }

@@ -75,7 +75,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function runInstallers(Event $event)
     {
         foreach ($this->finder->getDependentPackages($event->isDevMode()) as $package) {
-            $this->runner->runInstallers($package);
+            $this->runner->runInstallers($package, $event->isDevMode());
         }
     }
 
@@ -87,7 +87,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function runBuildTools(Event $event)
     {
         foreach ($this->finder->getDependentPackages($event->isDevMode()) as $package) {
-            $this->runner->runBuildTools($package);
+            $this->runner->runBuildTools($package, $event->isDevMode());
         }
     }
 
