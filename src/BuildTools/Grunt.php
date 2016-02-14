@@ -46,9 +46,8 @@ class Grunt implements BuildToolInterface
      * @param PackageWrapper $package
      * @param bool $isDev
      */
-    public function install(PackageWrapper $package, $isDev)
+    public function build(PackageWrapper $package, $isDev)
     {
         $this->execute('grunt', [], $this->io, $package->getPath());
     }
-
 }
