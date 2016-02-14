@@ -84,6 +84,13 @@ class Runner
     {
         foreach ($this->buildTools as $buildTool) {
             if ($buildTool->supports($package)) {
+                $this->io->write(
+                    sprintf(
+                        '<info>Running %s builder for %s</info>',
+                        $buildTool->getName(),
+                        $package->getPackage()->getPrettyName()
+                    )
+                );
                 $buildTool->build($package, $isDevMode);
             }
         }
