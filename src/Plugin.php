@@ -2,6 +2,7 @@
 
 namespace BudgeIt\ComposerBuilder;
 
+use BudgeIt\ComposerBuilder\BuildTools\Grunt;
 use BudgeIt\ComposerBuilder\Installers\Bower;
 use BudgeIt\ComposerBuilder\Installers\Npm;
 use Composer\Composer;
@@ -38,6 +39,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $processBuilder = new ProcessBuilder();
         $this->runner->registerInstaller(new Npm($io));
         $this->runner->registerInstaller(new Bower($io));
+        $this->runner->registerBuildTool(new Grunt($io));
         $this->finder = new Finder($composer, static::PACKAGE);
     }
 
