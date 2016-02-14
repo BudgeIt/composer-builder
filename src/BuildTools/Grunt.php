@@ -7,7 +7,6 @@ use BudgeIt\ComposerBuilder\ExecutorTrait;
 use BudgeIt\ComposerBuilder\HasIOInterfaceTrait;
 use BudgeIt\ComposerBuilder\PackageWrapper;
 use Composer\IO\IOInterface;
-use Exception;
 
 class Grunt implements BuildToolInterface
 {
