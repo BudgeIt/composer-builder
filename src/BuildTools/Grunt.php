@@ -2,14 +2,14 @@
 
 namespace BudgeIt\ComposerBuilder\BuildTools;
 
+use BudgeIt\ComposerBuilder\BuildToolInterface;
 use BudgeIt\ComposerBuilder\ExecutorTrait;
 use BudgeIt\ComposerBuilder\HasIOInterfaceTrait;
-use BudgeIt\ComposerBuilder\InstallerInterface;
 use BudgeIt\ComposerBuilder\PackageWrapper;
 use Composer\IO\IOInterface;
 use Exception;
 
-class Npm implements BuildToolInterface
+class Grunt implements BuildToolInterface
 {
 
     use ExecutorTrait, HasIOInterfaceTrait;
