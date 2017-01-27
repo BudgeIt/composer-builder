@@ -5,6 +5,6 @@ namespace BudgeIt\ComposerBuilder\Exceptions;
 class BinaryNotFoundException extends FileNotFoundException
 {
 
-    protected static $message = 'Could not find executable file %s';
+    protected static $file_not_found_message = 'Could not find executable file %s';
 
 }
