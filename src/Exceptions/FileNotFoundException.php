@@ -7,7 +7,7 @@ use Exception;
 class FileNotFoundException extends Exception
 {
 
-    protected static $message = 'Could not find file %s';
+    protected static $file_not_found_message = 'Could not find file %s';
 
     /**
      * @param $file
@@ -15,7 +15,7 @@ class FileNotFoundException extends Exception
      */
     public static function create($file)
     {
-        $message = sprintf(static::$message, $file);
+        $message = sprintf(static::$file_not_found_message, $file);
         return new static($message);
     }
 
